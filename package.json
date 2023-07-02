@@ -1,0 +1,26 @@
+{
+  "name": "final_irctc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jsdoc": "^3.6.10",
+    "parcel": "^2.0.0-beta.1"
+  },
+  "dependencies": {
+    "@types/sweetalert": "^2.0.4",
+    "express": "^4.18.2",
+    "mongodb": "^4.16.0",
+    "mongoose": "^6.2.6",
+    "mysql": "^2.18.1",
+    "save": "^2.4.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.4"
+  }
+}

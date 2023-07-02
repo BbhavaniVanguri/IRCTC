@@ -1,0 +1,918 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(50, 49, 51, 0.445);
+  border-radius: 1px;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  padding: 2rem;
+  background: linear-gradient(
+      0.5turn,
+      rgb(245 245 245 / 68%),
+      rgb(10 10 10 / 24%),
+      #333
+    ),
+    url(https://images.unsplash.com/photo-1532673492-1b3cdb05d51b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80),
+    no-repeat;
+
+  background-size: 100%;
+  height: 100%;
+  position: relative;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo {
+  height: 100px;
+  align-items: center;
+}
+
+/* MAIN */
+.app {
+  position: relative;
+  max-width: 100rem;
+  display: grid;
+  gap: 2rem;
+  opacity: 1;
+  transition: all 1s;
+  grid-template-columns: 3fr 4fr;
+  grid-template-rows: auto repeat(auto, 15rem) auto;
+  margin: 0rem auto;
+}
+
+.scroll-content {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.scroll-content marquee {
+  font-size: 18px;
+  font-weight: bolder;
+  color: rgb(43, 46, 226);
+  background-color: #f2f2f200;
+  border-radius: 8px;
+}
+
+/* MOVEMENTS */
+.train-list {
+  grid-row: 2 / span 3;
+  grid-column: 2;
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: scroll;
+  box-shadow: 1rem 1rem 3rem rgb(0 0 0 / 70%);
+  background-image: linear-gradient(0turn, rgb(194 197 223), rgb(255 255 255));
+}
+
+.movements__row {
+  padding: 1.7rem 1.7rem;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  height: auto;
+  width: 100%;
+}
+
+.movements__type {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.4rem 2rem;
+  border-radius: 0.2rem;
+}
+
+.movements__type--train {
+  background-image: linear-gradient(to top left, #1c7bb5f5, #4d8f97c7);
+}
+
+.container {
+  display: flex;
+  position: absolute;
+}
+
+.train-details {
+  color: #333;
+  font-size: 17px;
+  line-height: 14px;
+  margin-top: 15px;
+  padding-left: 15px;
+}
+
+.train-details .icon {
+  margin: 0 8px;
+}
+
+.train-details .duration {
+  color: #858585;
+}
+
+/*  NEW CHANGE - START */
+.train-details .train-stations {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.train-details .train-timings {
+  font-weight: 700;
+  left: 0%;
+}
+
+.train-dates {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.train-details img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+.Train-Start-date {
+  margin-left: 10px;
+  margin-left: 0px;
+}
+
+.Train-End-date {
+  margin-left: 200px;
+  margin-left: 113px;
+}
+
+.Train-Start-date,
+.Train-End-date {
+  font-size: 14px;
+  width: -webkit-fill-available;
+}
+
+.Available-seats {
+  width: 180px;
+  font-size: 16px;
+  padding: 0.3rem 1.5rem;
+  margin-right: 2rem;
+  border-radius: 8rem;
+  outline: 2px solid rgb(24 121 204 / 94%);
+  text-align: center;
+  cursor: pointer;
+  background-color: #7dd035;
+}
+
+/* .Available-seats */
+
+/* OPERATIONS */
+.operation {
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+  color: #333;
+}
+
+.operation--booking,
+.operation--PNRStatus,
+.operation--cancellation {
+  background-image: linear-gradient(0.5turn, #93dfe3, rgb(196, 196, 223));
+}
+.operation--booking,
+.operation--PNRStatus {
+  box-shadow: 1rem 1rem 2rem rgb(0 0 0 / 70%);
+}
+
+.operation--booking:focus,
+.operation--booking:hover {
+  box-shadow: 1rem 1rem 4rem rgb(0 0 0 / 80%);
+}
+.operation--PNRStatus:focus,
+.operation--PNRStatus:hover {
+  box-shadow: 1rem 1rem 4rem rgb(0 0 0 / 80%);
+}
+.operation--cancellation:focus,
+.operation--cancellation:hover {
+  box-shadow: 1rem 1rem 4rem rgb(0 0 0 / 80%);
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 2.5fr 2.5fr 0fr;
+  grid-template-rows: auto auto;
+  gap: 0.4rem 1rem;
+  grid-template-columns: 2.5fr;
+  gap: 1rem;
+  position: relative;
+  width: 100%;
+}
+
+.form__input {
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+  padding: 0.3rem 1rem;
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+
+  margin: 1px 0px;
+  padding: 4px 15px;
+  text-align: left;
+  background-color: rgb(255 255 255);
+}
+
+.form__input::placeholder {
+  color: black;
+}
+
+.form__input:focus {
+  outline: none;
+}
+
+.form__btn {
+  border: none;
+  border-radius: 1.7rem;
+  font-size: 1.5rem;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: center;
+}
+
+.form__btn.btn__search,
+.form__btn#form__btn--PNR,
+.form__btn#form__btn--Cancel-PNR {
+  margin-inline: 99px;
+  padding: 4px;
+  background: rgb(0 0 0 / 70%);
+  color: whitesmoke;
+}
+
+.PNR {
+  width: 40%;
+  border: none;
+  font-family: inherit;
+  text-align: center;
+  color: #333;
+  padding: 0.3rem 1rem;
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: inline-block;
+}
+
+.PNR:focus,
+.PNR:hover {
+  outline: dotted;
+  background-color: #34f1c885;
+}
+
+/*Book-Ticket model window- hidden class*/
+.hidden {
+  display: none;
+}
+
+.modal1-passenger-details,
+.modal2-PNR-details,
+.modal3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background-image: linear-gradient(0.5turn, #93dfe3, #c4c4df 50%);
+  padding: 5rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgb(0 0 0 / 30%);
+  z-index: 10;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+.close-modal1 {
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.passengers {
+  max-width: 600px;
+  padding: 20px 12px 10px 0px;
+  font: 13px Arial, Helvetica, sans-serif;
+  border-color: black;
+  height: auto;
+  border-collapse: collapse;
+}
+.passenger-name,
+.passenger-age,
+.passenger-gender,
+.passenger-birthType,
+.passengers-number,
+.passenger-phoneNumber {
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 80%;
+  padding: 6px 15px;
+  margin: 12px 12px 12px 90px;
+  border-radius: 5px;
+}
+
+.passenger-label {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 30px;
+}
+
+.add-passenger,
+.Confirm_Booking {
+  width: 30%;
+  padding: 4px 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 12px;
+  pointer-events: auto;
+  text-shadow: 0 0 black;
+  font-variant-caps: small-caps;
+}
+
+.Confirm_Booking {
+  margin-top: 20px;
+  background-color: #f3bc2c;
+}
+
+
+.Confirm_Booking:hover {
+  color: white;
+  background-color: rgb(20 117 207);
+}
+
+.Booking_done {
+  color: rgb(43 46 226);
+  font-weight: 600;
+  text-align: center;
+  font-size: 20px;
+}
+
+.noClick {
+  pointer-events: none;
+}
+
+/***** For adding multiple passenger details *********/
+/*To hide passengers*/
+.hidden-passenger {
+  display: none;
+}
+
+/*To add scroll-bar passengers class*/
+.passenger-scroll {
+  overflow-y: scroll;
+  height: 535px;
+}
+
+/*****PNR status***/
+.hidden1 {
+  display: none;
+}
+
+h3 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.modal2-PNR-details {
+  height: auto;
+  width: auto;
+}
+
+h4.PNR-status-details {
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color: rgb(245, 245, 245);
+  outline: 1px solid rgb(31, 31, 31);
+  color: black;
+  outline: 1px dotted #bfbfda;
+  width: 90%;
+  padding: 5px 12px;
+  margin: 5px 30px;
+}
+
+.table-wrapper {
+  box-shadow: 0px 5px 15px rgb(0 0 0 / 40%);
+  margin-top: 30px;
+}
+
+.PNR-table {
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: white;
+}
+
+.PNR-table td,
+.PNR-table th {
+  text-align: center;
+  padding: 8px;
+}
+
+.PNR-table td {
+  border-right: 1px solid #f8f8f8;
+  font-size: 14px;
+}
+
+.PNR-table thead th {
+  color: #ffffff;
+  background: #324960;
+}
+
+.PNR-table tr {
+  background: #f8f8f8;
+  color: black;
+}
+
+/*MODEL WINDOW 3- CANCELLATION*/
+/*************************/
+
+.hidden2 {
+  display: none;
+}
+
+.modal3 {
+  max-width: auto;
+  height: 600px;
+}
+
+.modal3 .container {
+  color: #333;
+  padding-top: 12px;
+  border-radius: 8px;
+  margin-right: 50px;
+}
+
+.modal3 .container .panel .panel-heading,
+.panel-body {
+  padding: 5px 0px 0px 5px;
+  padding-inline: 16px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.modal3 .container .panel .panel-heading,
+.panel-body hr {
+  margin-left: 0px;
+}
+.modal3 .container .panel .panel-footer {
+  margin-top: 10px;
+  word-spacing: 0.1rem;
+}
+
+.modal3 .container p {
+  padding: 8px 10px;
+}
+
+/* CONFIRM & CANCEL BUTTON */
+.btn_confirm {
+  background-color: rgb(20 117 207);
+  color: rgb(245, 245, 245);
+}
+.btn_cancel {
+  background-color: rgb(245, 245, 245);
+}
+.btn_confirm,
+.btn_cancel {
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 25px;
+  border-radius: 3rem;
+}
+
+.btn_confirm:hover {
+  outline: none;
+  outline: 1px solid rgb(31, 31, 31);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.train-list .init-window img {
+  width: 20%;
+  height: 30%;
+  display: block;
+  margin: 40px auto;
+}
+
+.train-list .init-window p {
+  font-size: 40px;
+  color: rgb(0 0 0 / 70%);
+  font-family: monospace;
+  z-index: -5;
+}
+
+hr {
+  margin-top: 15px;
+  margin-left: 70px;
+}
+
+/** TRAIN ANIMATION **/
+
+.content {
+  position: relative;
+  width: 400px;
+  height: 250px;
+  overflow: hidden;
+  margin-left: 80px;
+}
+
+.track {
+  position: absolute;
+  width: 400px;
+  height: 5px;
+  background-color: #333;
+  top: 200px;
+}
+
+.track:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 5px;
+  background-color: #333;
+  top: 4px;
+  box-shadow: 20px 0 #333, -20px 0 #333, -40px 0 #333, -60px 0 #333,
+    -80px 0 #333, 40px 0 #333, 60px 0 #333, 80px 0 #333, 100px 0 #333,
+    120px 0 #333, 140px 0 #333, 160px 0 #333, 180px 0 #333, 200px 0 #333,
+    220px 0 #333, 240px 0 #333, 260px 0 #333, 280px 0 #333, 300px 0 #333,
+    320px 0 #333, 340px 0 #333, 360px 0 #333, 380px 0 #333, 400px 0 #333,
+    420px 0 #333, 440px 0 #333, -100px 0 #333, -120px 0 #333, -140px 0 #333,
+    460px 0 #333, 480px 0 #333;
+  animation: move 1s linear infinite reverse;
+}
+
+@keyframes move {
+  from {
+    left: -100px;
+  }
+  to {
+    left: 100px;
+  }
+}
+
+.train {
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  border: 5px solid #333;
+  background-color: #9e2a2b;
+  border-radius: 0 10px 0 0;
+  top: 140px;
+  left: 285px;
+  animation: scale 1s linear infinite;
+}
+
+@keyframes scale {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.99);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.train:before {
+  content: "";
+  position: absolute;
+  border: 5px solid #333;
+  background-color: #335c67;
+  width: 35px;
+  height: 60px;
+  left: -45px;
+  top: -35px;
+}
+
+.train:after {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 5px;
+  border-radius: 10px;
+  border: 5px solid #333;
+  background-color: #fff3b0;
+  top: 30px;
+  left: -50px;
+}
+
+.front {
+  position: absolute;
+  border: 5px solid #333;
+  background-color: #aed9e0;
+  box-shadow: inset 2px -5px rgba(255, 255, 255, 0.3);
+  width: 20px;
+  height: 30px;
+  left: -35.5px;
+  top: -20px;
+}
+
+.front:before {
+  content: "";
+  position: absolute;
+  background-color: #333;
+  width: 15px;
+  height: 5px;
+  border-radius: 10px;
+  top: 25px;
+  left: 70px;
+  box-shadow: 0px 10px #333, -50px -45px #333, -86px -45px #333,
+    -22px -41px #333, -11px -41px #333;
+}
+
+.front:after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 20px;
+  border: 5px solid #333;
+  left: 50px;
+  top: -16px;
+  background-color: #adb5bd;
+}
+
+.wheels {
+  position: absolute;
+  z-index: 1;
+}
+
+.smallOne,
+.smallTwo,
+.smallThree,
+.smallFour,
+.smallFive,
+.smallSix {
+  position: absolute;
+  border: 5px solid #333;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  top: 40px;
+  background-color: #e09f3e;
+  box-shadow: inset 2px 2px white;
+  z-index: 2;
+}
+
+.smallOne {
+  left: 30px;
+  animation: spin 0.5s infinite linear;
+}
+
+.smallTwo {
+  left: 0;
+  animation: spin 0.5s infinite linear;
+}
+
+.smallThree {
+  left: -225px;
+  animation: spin 0.5s infinite linear;
+}
+
+.smallFour {
+  left: -190px;
+  animation: spin 0.5s infinite linear;
+}
+
+.smallFive {
+  left: -130px;
+  animation: spin 0.5s infinite linear;
+}
+
+.smallSix {
+  left: -95px;
+  animation: spin 0.5s infinite linear;
+}
+
+.big {
+  position: absolute;
+  border: 5px solid #333;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background-color: #e09f3e;
+  box-shadow: inset 2px 2px white;
+  top: 30px;
+  left: -40px;
+  animation: spin 0.5s infinite linear;
+}
+
+.cord {
+  position: absolute;
+  width: 10px;
+  height: 5px;
+  background-color: #333;
+  top: 35px;
+  left: -59px;
+  z-index: 3;
+}
+
+.coach {
+  position: absolute;
+  width: 80px;
+  height: 60px;
+  border: 5px solid #333;
+  background-color: #9e2a2b;
+  /* left: -145px; */
+  left: -139px;
+  top: -20px;
+}
+
+.coach:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 5px;
+  background-color: #333;
+  top: 50px;
+  left: -25px;
+}
+
+.coach:after {
+  content: "";
+  position: absolute;
+  width: 69px;
+  height: 50px;
+  border: 5px solid #333;
+  background-color: #335c67;
+  top: -5px;
+  left: -100px;
+}
+
+.coachTwo {
+  position: absolute;
+  border: 5px solid #333;
+  background-color: #aed9e0;
+  box-shadow: inset 2px -5px rgba(255, 255, 255, 0.3);
+  width: 15px;
+  height: 25px;
+  left: -225px;
+  top: -5px;
+}
+
+.coachTwo:before,
+.coachTwo:after {
+  content: "";
+  position: absolute;
+  border: 5px solid #333;
+  background-color: #aed9e0;
+  box-shadow: inset 2px -5px rgba(255, 255, 255, 0.3);
+  width: 15px;
+  height: 25px;
+  top: -5px;
+}
+
+.coachTwo:before {
+  left: 30px;
+}
+
+.coachTwo:after {
+  left: 90px;
+}
+
+.windows {
+  position: absolute;
+  border: 5px solid #333;
+  background-color: #aed9e0;
+  box-shadow: inset 2px -5px rgba(255, 255, 255, 0.3);
+  width: 15px;
+  height: 25px;
+  left: -95px;
+  top: -5px;
+  z-index: 6;
+}
+
+.windows:before {
+  content: "";
+  position: absolute;
+  background-color: #333;
+  height: 5px;
+  width: 95px;
+  border-radius: 10px;
+  top: -20px;
+  left: -153px;
+  box-shadow: 95px 0px #333;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#up {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(31, 28, 28);
+  border-radius: 50%;
+  opacity: 0;
+  top: -30px;
+  left: 25.5px;
+  z-index: -1;
+}
+
+.steam {
+  animation: up 2.5s ease-out infinite;
+}
+
+.steam2 {
+  animation: up 1.7s ease-out infinite 1s;
+}
+
+.steam2:before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  /* background-color: #fff; */
+  background-color: rgb(0 0 0 / 40%);
+  border-radius: 50%;
+  top: 20px;
+}
+
+@keyframes up {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110px) translateX(-80px) scale(1.5);
+    opacity: 0.2;
+  }
+}
+
+/** SWEET ALERT **/
+.swal-text {
+  font-size: 24px;
+  background-color: #e0fcf2;
+  padding: 17px;
+  border: 1px solid #f0e1a1;
+  display: block;
+  margin: 22px;
+  text-align: center;
+  color: #333;
+}

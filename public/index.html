@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="module" defer src="controller.js"></script>
+
+    <title>IRCTC - Railway Connect</title>
+
+    <!-- FAV ICON -->
+    <link rel="icon" type="image/x-icon" href="./images/logo.png" />
+  </head>
+  <body>
+    <!-- TOP LOGO -->
+    <nav>
+      <img src="./images/logo1.png" alt="Logo" class="logo" />
+    </nav>
+
+    <main class="app">
+      <div class="scroll-content"></div>
+
+      <!-- MOVEMENTS -->
+      <div class="train-list"></div>
+
+      <!-- OPERATION: Booking Ticket -->
+      <div class="operation operation--booking">
+        <h2>Book Ticket</h2>
+        <form class="form form--booking">
+          <!-- AUTOCOMPLETE START-->
+          <input
+            type="text"
+            placeholder="From"
+            class="form__input source"
+            id="automplete-1"
+            name="Place"
+            required=""
+            onkeydown="return /[a-z]/i.test(event.key)"
+            list="From"
+          />
+          <datalist id="From"></datalist>
+
+          <input
+            type="text"
+            placeholder="To"
+            id="myInputTo"
+            class="form__input destination"
+            required=""
+            onkeydown="return /[a-z]/i.test(event.key)"
+            list="To"
+          />
+          <datalist id="To"></datalist>
+          <!-- AUTOCOMPLETE END-->
+
+          <input
+            type="date"
+            value=""
+            min=""
+            max="2022-06-30"
+            class="form__input form__date"
+            required=""
+            onkeydown="return false"
+          />
+
+          <button class="form__btn btn__search">Search Trains</button>
+        </form>
+      </div>
+
+      <!-- OPERATION: PNR STATUS -->
+      <div class="operation operation--PNRStatus">
+        <h2>Check PNR status</h2>
+        <form class="form form--PNR">
+          <input
+            type="text"
+            placeholder="Enter PNR Number"
+            class="form__input form__input--PNR"
+            required=""
+          />
+          <button class="form__btn" id="form__btn--PNR">Check Status</button>
+        </form>
+      </div>
+
+      <!-- OPERATION: CANCELLATION -->
+      <div class="operation operation--cancellation">
+        <h2>Cancellation</h2>
+        <form class="form form--cancel">
+          <input
+            type="text"
+            placeholder="Enter PNR Number"
+            class="form__input form__input--cancel-PNR"
+            required=""
+          />
+          <button class="form__btn" id="form__btn--Cancel-PNR">
+            Cancel Ticket
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- BOOK_TOCKET MODEL WINDOW -->
+    <div class="modal1-passenger-details hidden">
+      <button class="close-modal1">×</button>
+      <h3 class="Book-ticket-section-heading">TICKET BOOKING SECTION</h3>
+      <div class="passengers">
+        <!--passenger-scroll"-->
+        <select class="passengers-number">
+          <option selected disabled>Select number of passengers</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+
+        <form class="Passenger-1 hidden-passenger">
+          <div class="passenger-label">Enter passenger-1 details</div>
+          <input
+            type="text"
+            placeholder="Name"
+            class="passenger-name"
+            onkeydown="return /[a-z]/i.test(event.key)"
+            required=""
+          />
+
+          <input
+            type="text"
+            placeholder="Age"
+            class="passenger-age"
+            required=""
+          />
+
+          <select class="passenger-gender" required>
+            <option selected disabled>Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Transgender">Transgender</option>
+          </select>
+
+          <select class="passenger-birthType" required>
+            <option selected disabled>Berth type</option>
+            <option value="lower">lower</option>
+            <option value="middle">middle</option>
+            <option value="upper">upper</option>
+          </select>
+
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Phone Number"
+            class="passenger-phoneNumber"
+            required=""
+          />
+
+          <input
+            type="submit"
+            value="Add Passenger"
+            class="add-passenger"
+            required=""
+          />
+        </form>
+
+        <br />
+        <form class="Passenger-2 hidden-passenger">
+          <hr />
+          <div class="passenger-label">Enter passenger-2 details</div>
+          <input
+            type="text"
+            placeholder="Name"
+            class="passenger-name"
+            onkeydown="return /[a-z]/i.test(event.key)"
+            required=""
+          />
+
+          <input
+            type="text"
+            placeholder="Age"
+            class="passenger-age"
+            required=""
+          />
+
+          <select class="passenger-gender" required>
+            <option selected disabled>Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Transgender">Transgender</option>
+          </select>
+
+          <select class="passenger-birthType" required>
+            <option selected disabled>Berth type</option>
+            <option value="lower">lower</option>
+            <option value="middle">middle</option>
+            <option value="upper">upper</option>
+          </select>
+
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Phone Number"
+            class="passenger-phoneNumber"
+            required=""
+          />
+
+          <input
+            type="submit"
+            value="Add Passenger"
+            class="add-passenger"
+            required=""
+          />
+        </form>
+
+        <br />
+        <form class="Passenger-3 hidden-passenger">
+          <hr />
+          <div class="passenger-label">Enter passenger-3 details</div>
+          <input
+            type="text"
+            placeholder="Name"
+            class="passenger-name"
+            onkeydown="return /[a-z]/i.test(event.key)"
+            required=""
+          />
+
+          <input
+            type="text"
+            placeholder="Age"
+            class="passenger-age"
+            required=""
+          />
+
+          <select class="passenger-gender" required>
+            <option selected disabled>Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Transgender">Transgender</option>
+          </select>
+
+          <select class="passenger-birthType" required="">
+            <option selected disabled>Berth type</option>
+            <option value="lower">lower</option>
+            <option value="middle">middle</option>
+            <option value="upper">upper</option>
+          </select>
+
+          <input
+            type="tel"
+            id="phone"
+            pattern="[7-9]{2}-[0-9]{3}-[0-9]{4}"
+            placeholder="Phone Number"
+            class="passenger-phoneNumber"
+            required=""
+          />
+
+          <input type="submit" value="Add Passenger" class="add-passenger" />
+        </form>
+
+        <br />
+        <form class="Passenger-4 hidden-passenger">
+          <hr />
+          <div class="passenger-label">Enter passenger-4 details</div>
+          <input
+            type="text"
+            placeholder="Name"
+            class="passenger-name"
+            onkeydown="return /[a-z]/i.test(event.key)"
+            required=""
+          />
+
+          <input
+            type="text"
+            placeholder="Age"
+            class="passenger-age"
+            required=""
+          />
+
+          <select class="passenger-gender" required>
+            <option selected disabled>Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Transgender</option>
+          </select>
+
+          <select class="passenger-birthType" required>
+            <option selected disabled>Berth type</option>
+            <option>lower</option>
+            <option>middle</option>
+            <option>upper</option>
+          </select>
+
+          <input
+            type="tel"
+            id="phone"
+            pattern="[7-9]{2}-[0-9]{3}-[0-9]{4}"
+            placeholder="Phone Number"
+            class="passenger-phoneNumber"
+            required=""
+          />
+
+          <input type="submit" value="Add Passenger" class="add-passenger" />
+        </form>
+        <input
+          type="submit"
+          value="Book Tickets"
+          class="Confirm_Booking hidden"
+        />
+      </div>
+      <div class="Booking_done hidden">
+        Successfully Booked the tickets 🎫🎫🎫<br /><br />
+        <span>PNR No:</span>
+        <span class="PNR"> </span>
+      </div>
+    </div>
+
+    <div class="overlay hidden"></div>
+
+    <!-- CHECK PNR MODEL WINDOW -->
+
+    <div class="modal2-PNR-details hidden1">
+      <button class="close-modal1">×</button>
+      <div class="PNR-details">
+        <h3>PNR STATUS</h3>
+        <h4 class="PNR-status-details">
+          PNR no: <span class="PNR-no">25452341625</span>
+        </h4>
+        <h4 class="PNR-status-details">
+          Train Name & Number:
+          <span class="PNR-Train-name-number">Tirumala Express(12345)</span>
+        </h4>
+        <h4 class="PNR-status-details">
+          Source: <span class="PNR-source">Narsipatanam</span>
+        </h4>
+        <h4 class="PNR-status-details">
+          Destination: <span class="PNR-destination">Tirupathi</span>
+        </h4>
+        <h4 class="PNR-status-details">
+          Time & Date of Journey:
+          <span class="PNR-dateofjourney-time"> 07:05:00 Sun Mar 13 2022</span>
+        </h4>
+        <div class="table-wrapper">
+          <table class="PNR-table">
+            <thead>
+              <tr>
+                <th>Passenger</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Status</th>
+                <th>Bearth Type</th>
+                <th>Seat Number</th>
+              </tr>
+            </thead>
+            <tbody class="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay hidden1"></div>
+
+    <!-- CANCELLATION MODEL WINDOW -->
+
+    <div class="modal3 hidden2">
+      <button class="close-modal1">&times;</button>
+      <div class="PNR-details">
+        <h3>Ticket Cancellation</h3>
+        <h4 class="PNR-status-details">
+          PNR no: <span class="PNR-no1">25452341625</span>
+        </h4>
+        <h4 class="PNR-status-details">
+          Train Name: <span class="PNR-Train-name1">Tirumala Express</span>
+        </h4>
+        <h4 class="PNR-status-details">
+          Source: <span class="PNR-source1">Narsipatanam</span>
+        </h4>
+        <h4 class="PNR-status-details">
+          Destination: <span class="PNR-destination1">Tirupathi</span>
+        </h4>
+        <h4 class="PNR-status-details">
+          Date of Journey: <span class="PNR-dateofjourney1">25-02-2022</span>
+        </h4>
+        <div class="table-wrapper">
+          <table class="PNR-table">
+            <thead>
+              <tr>
+                <th>Passenger</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Status</th>
+                <th>Bearth Type</th>
+                <th>Seat Number</th>
+              </tr>
+            </thead>
+            <tbody class="table-body-cancel"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="container">
+        <div class="panel">
+          <div class="panel-heading">
+            <h4>Terms & Condition</h4>
+          </div>
+          <div class="panel-body">
+            <hr />
+            <p>
+              e-Tickets can be cancelled on Internet at this website till Chart
+              preparation of the train .Cancellations are not allowed at face to
+              face Railway Counters. If the user wishes to cancel his e-Ticket,
+              he can do so till the time of chart preparation for the train.
+            </p>
+            <br />
+          </div>
+          <div class="panel-footer">
+            <form class="form">
+              <div>
+                <button type="submit" class="btn_confirm">Confirm</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay hidden2"></div>
+  </body>
+</html>
